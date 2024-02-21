@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, Field
 
 class TodoBase(BaseModel):
@@ -9,3 +10,7 @@ class Todo(TodoBase):
     
     class Config:
         from_attributes = True
+        
+class TodoUpdate(BaseModel):
+    title: Optional[str] = Field(None, max_length=60)
+    done: Optional[bool] = False
